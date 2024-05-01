@@ -13,12 +13,15 @@ app.use('/js', express.static(path.join(__dirname ,'/node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname ,'/node_modules/jquery/dist')))
 
 
+
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views', './views');
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', {
+        producto: ['banana', 'cebollas', 'lechuga', 'papas', 'pimenton', 'tomate']
+    })
 })
 
 const PORT = process.env.PORT || 5055
